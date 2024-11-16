@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Technical Report on “How to Cook Lasagna”</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="14089371-a876-802a-97d2-edb566cc1dc1" class="page sans"><header><h1 class="page-title">Technical Report on “How to Cook Lasagna”</h1><p class="page-description"></p></header><div class="page-body"><h2 id="14089371-a876-80e3-a4b2-eac4ad34c3fe" class=""><strong>Overview</strong></h2><p id="14089371-a876-8036-9690-ea2958d8c8c9" class="">Lasagna is a classic Italian dish consisting of layers of pasta, meat or vegetable sauce, creamy béchamel and cheese, baked to golden perfection. This report outlines the ingredients, equipment and step-by-step instructions for making lasagna at home.</p><h2 id="14089371-a876-807b-b2a0-f3928e0965a9" class=""><strong>Ingredients</strong></h2><h3 id="14089371-a876-8078-94b1-d8307c220b37" class=""><strong>1. Pasta</strong></h3><p id="14089371-a876-800a-9580-e98596c74059" class="">Lasagna sheets: 12 sheets</p><h3 id="14089371-a876-80e1-9dbb-fbcef2a3054f" class="">2. Meat Sauce (Bolognese)</h3><ul id="14089371-a876-8038-9a74-d0808af9ab21" class="bulleted-list"><li style="list-style-type:disc">Ground beef: 500g</li></ul><ul id="14089371-a876-80e8-be79-d8caec8d22a4" class="bulleted-list"><li style="list-style-type:disc">Ground pork (optional): 200g</li></ul><ul id="14089371-a876-80d3-adf7-f630a2a71487" class="bulleted-list"><li style="list-style-type:disc">Onion: 1 medium, finely chopped</li></ul><ul id="14089371-a876-8091-a966-dc7162317a8a" class="bulleted-list"><li style="list-style-type:disc">Garlic: 3 cloves, minced</li></ul><ul id="14089371-a876-805f-8c59-c8db5c7c9fbc" class="bulleted-list"><li style="list-style-type:disc">Tomatoes (diced): 2-3 pieces</li></ul><ul id="14089371-a876-80b4-898a-cb20c4784f44" class="bulleted-list"><li style="list-style-type:disc">Tomato paste: 3 tbsp</li></ul><ul id="14089371-a876-8023-bbbe-cbdcd8b05c3b" class="bulleted-list"><li style="list-style-type:disc">Olive oil: 2 tbsp</li></ul><ul id="14089371-a876-8048-ac8b-ed4f16a4977c" class="bulleted-list"><li style="list-style-type:disc">Red wine (optional): 100ml</li></ul><ul id="14089371-a876-8021-a41c-e4962e0dea6b" class="bulleted-list"><li style="list-style-type:disc">Italian seasoning: 1 tbsp</li></ul><ul id="14089371-a876-8000-83b0-f0047073ddfc" class="bulleted-list"><li style="list-style-type:disc">Salt and pepper: to taste</li></ul><h3 id="14089371-a876-805d-9183-eebe70bf891d" class="">3. Béchamel Sauce</h3><ul id="14089371-a876-8015-9548-d1a87f9c17b7" class="bulleted-list"><li style="list-style-type:disc">Butter: 50g</li></ul><ul id="14089371-a876-80b3-87dd-f379b18f5d6d" class="bulleted-list"><li style="list-style-type:disc">Flour: 50g</li></ul><ul id="14089371-a876-80ab-9285-ea5410b4cf71" class="bulleted-list"><li style="list-style-type:disc">Whole milk: 500ml</li></ul><ul id="14089371-a876-8048-afb1-f6d20debe8f1" class="bulleted-list"><li style="list-style-type:disc">Nutmeg (optional): a pinch</li></ul><ul id="14089371-a876-80bf-bdae-ee6695d23857" class="bulleted-list"><li style="list-style-type:disc">Italian spices, salt and pepper: to taste</li></ul><h3 id="14089371-a876-8005-902e-d5dd4a528224" class=""><strong>4. </strong>Cheese</h3><p id="14089371-a876-80f0-9114-f3ddad1f1535" class="">Parmesan/Tilsiter or any hard cheese: 200 g</p><h2 id="14089371-a876-8069-913f-c0346f5888bb" class=""><strong>Equipment</strong></h2><ul id="14089371-a876-807c-9b62-cee8bb0da605" class="bulleted-list"><li style="list-style-type:disc">Baking dish (roughly 22.5x33 cm)</li></ul><ul id="14089371-a876-8050-9604-f628c30d7f3b" class="bulleted-list"><li style="list-style-type:disc">Large skillet (roughly 24-32 cm)</li></ul><ul id="14089371-a876-80cd-8dd3-c8345bafb9c4" class="bulleted-list"><li style="list-style-type:disc">Medium saucepan (3-5 liters)</li></ul><ul id="14089371-a876-80f9-8a59-ebe2f2523ea2" class="bulleted-list"><li style="list-style-type:disc">Whisk</li></ul><ul id="14089371-a876-8064-9661-fb609191ea09" class="bulleted-list"><li style="list-style-type:disc">Fine grater</li></ul><ul id="14089371-a876-80e1-b067-c42ddd53467d" class="bulleted-list"><li style="list-style-type:disc">Spoon</li></ul><ul id="14089371-a876-8091-be24-f098178f3da2" class="bulleted-list"><li style="list-style-type:disc">Oven (preheated to 190°C)</li></ul><h2 id="14089371-a876-8063-b5d7-ccdbb8876210" class=""><strong>Preparation</strong></h2><h3 id="14089371-a876-8063-b8d9-fe276b952cf9" class="">Prepare the Meat Sauce</h3><ol type="1" id="14089371-a876-80d3-a85a-ed10edb08882" class="numbered-list" start="1"><li>Heat the olive oil in a large skillet over medium heat.</li></ol><div id="14089371-a876-800c-8575-ee4d108ddce6" class="column-list"><div id="14089371-a876-8012-93c1-d064f4e535c1" style="width:50%" class="column"><ol type="1" id="14089371-a876-80d4-990d-c8fe6f84b403" class="numbered-list" start="2"><li>Saute the onion until translucent (about 5 minutes), then add garlic and cook for 1 minute.</li></ol></div><div id="14089371-a876-8046-bd92-cb6bcb743355" style="width:50%" class="column"><figure id="14089371-a876-80cd-9e54-e1e318be06b2" class="image"><a href="sm_363660.jpg"><img style="width:157px" src="sm_363660.jpg"/></a></figure></div></div><div id="14089371-a876-80cc-855d-d7d01d933cdf" class="column-list"><div id="14089371-a876-80c4-9cde-d21305925f53" style="width:50%" class="column"><ol type="1" id="14089371-a876-8018-b232-cb27e2d9b26f" class="numbered-list" start="3"><li>Add ground beef (and pork - optional), cooking until browned.</li></ol></div><div id="14089371-a876-80a4-9b01-df71fb74c15c" style="width:50%" class="column"><figure id="14089371-a876-80f3-9df9-f94b0be5306e" class="image"><a href="sm_363661.jpg"><img style="width:169px" src="sm_363661.jpg"/></a></figure></div></div><ol type="1" id="14089371-a876-80f3-b29c-d87703e6f2ca" class="numbered-list" start="4"><li>Add the tomato paste, canned tomatoes, and red wine (optional).</li></ol><div id="14089371-a876-8004-a8d2-d3ef46adf8f7" class="column-list"><div id="14089371-a876-80ef-a682-f02e093f30b6" style="width:50%" class="column"><ol type="1" id="14089371-a876-8095-9532-fcb87bc33028" class="numbered-list" start="5"><li>Season with Italian spices, salt and pepper to taste and bake for 20-30 minutes.</li></ol></div><div id="14089371-a876-8019-bc93-c72ae2895c61" style="width:50%" class="column"><figure id="14089371-a876-80b2-aede-cf522425aa76" class="image"><a href="sm_363773.jpg"><img style="width:172px" src="sm_363773.jpg"/></a></figure></div></div><h3 id="14089371-a876-804d-a949-cc3e686764c4" class="">Prepare the Béchamel Sauce</h3><ol type="1" id="14089371-a876-8085-9331-edf4bba6b5c6" class="numbered-list" start="1"><li>Melt butter in a saucepan over medium heat.</li></ol><ol type="1" id="14089371-a876-8054-8c7f-f5f0e41bc923" class="numbered-list" start="2"><li>Add the flour in small batches, stirring constantly, and cook for 2-3 minutes.</li></ol><div id="14089371-a876-8099-86ea-c31174b32fbb" class="column-list"><div id="14089371-a876-8010-b81c-c358b798fc8c" style="width:50%" class="column"><ol type="1" id="14089371-a876-80ff-8c49-ddb4c4524b8d" class="numbered-list" start="3"><li>Gradually add the milk, stirring constantly with a whisk to prevent lumps from forming.</li></ol></div><div id="14089371-a876-801f-aea5-d73095e46847" style="width:50%" class="column"><figure id="14089371-a876-8093-a5d0-e80f442821a0" class="image"><a href="sm_363304.jpg"><img style="width:167px" src="sm_363304.jpg"/></a></figure></div></div><div id="14089371-a876-802a-a45b-f6b65f316d97" class="column-list"><div id="14089371-a876-80bd-a406-d530c299dcd5" style="width:50%" class="column"><ol type="1" id="14089371-a876-805a-9427-fad483e8a44e" class="numbered-list" start="4"><li>Cook until thickened (5-7 minutes) and season with nutmeg, salt, and pepper to taste. </li></ol></div><div id="14089371-a876-80c8-b09d-d9adbf0a767d" style="width:50%" class="column"><figure id="14089371-a876-8022-ae37-d73938963a83" class="image"><a href="image.png"><img style="width:206px" src="image.png"/></a></figure></div></div><h3 id="14089371-a876-8062-b537-dc15e6e04f2b" class="">Prepare the cheese</h3><p id="14089371-a876-805b-9f31-f715f06c43a1" class="">Grate the cheese on a fine grater</p><h2 id="14089371-a876-80d5-8372-ece3eb2286e7" class=""><strong>Assembly</strong></h2><ol type="1" id="14089371-a876-8011-b9bb-d7f0c377912b" class="numbered-list" start="1"><li>Using a spoon, spread a thin layer (2-3 cm) of béchamel sauce on the bottom of the baking dish.</li></ol><ol type="1" id="14089371-a876-8043-b1b3-d2fb1ac5432f" class="numbered-list" start="2"><li>Lay down a layer of lasagna sheets.</li></ol><div id="14089371-a876-804f-a83d-f636fbd508b1" class="column-list"><div id="14089371-a876-801a-9eed-edc82e881dcd" style="width:50%" class="column"><ol type="1" id="14089371-a876-80d6-afe6-ccc7059c6186" class="numbered-list" start="3"><li>Add a layer of béchamel sauce, then a layer of meat sauce.</li></ol></div><div id="14089371-a876-80b7-8b99-e0c9425c4a90" style="width:50%" class="column"><figure id="14089371-a876-800a-9c98-e8bb19892106" class="image"><a href="image%201.png"><img style="width:156px" src="image%201.png"/></a></figure></div></div><ol type="1" id="14089371-a876-80cc-84a6-f8a070453a46" class="numbered-list" start="4"><li>Spread a portion of cheese.</li></ol><ol type="1" id="14089371-a876-8000-a494-d94975c935f1" class="numbered-list" start="5"><li>Repeat the layers until all ingredients are used, finishing with meat sauce and cheese on top.</li></ol><h2 id="14089371-a876-8046-b037-e9859fc0f1df" class=""><strong>Bake</strong></h2><ol type="1" id="14089371-a876-8023-8771-feb3fddad85d" class="numbered-list" start="1"><li>Bake in preheated oven for 40 minutes.</li></ol><ol type="1" id="14089371-a876-80ff-a894-e96e127f94b3" class="numbered-list" start="2"><li>Let lasagne rest for 10 minutes before serving. </li></ol><figure id="14089371-a876-8003-929a-e4e79dca3e78" class="image" style="text-align:left"><a href="e1834023-a440-417b-8552-7644db59aa07.png"><img style="width:315.60137457044675px" src="e1834023-a440-417b-8552-7644db59aa07.png"/></a></figure><p id="14089371-a876-80df-b7b7-ed4914bb4381" class="">The lasagna is ready.</p><h2 id="14089371-a876-80c4-89b1-fbb863f9e410" class=""><strong>Tips and Notes</strong></h2><p id="14089371-a876-8022-b465-f1871a4c6505" class=""><strong>Texture:</strong> Ensure that the pasta sheets are cooked to your desired level of softness by checking them while baking.<br/><br/><strong>Flavor enhancement:</strong> You can add different herbs and spices, bay leaves or fresh basil to the meat sauce for extra depth of flavor.<br/><br/><strong>Storage:</strong> Leftovers can be refrigerated for up to 3 days or frozen for up to 3 months.</p><h2 id="14089371-a876-80dd-9d45-db0701033abb" class=""><strong>Conclusion</strong></h2><p id="14089371-a876-80cc-a187-d136b1f5825c" class="">Preparing lasagna requires accuracy and care, from making the sauce to combining the layers with the right balance of ingredients. By following this guide, you can prepare a perfectly layered and delicious lasagna, suitable for any meeting or meal.</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
